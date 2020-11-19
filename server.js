@@ -32,5 +32,5 @@ app.post("/api/notes", function (req, res) {
 //listener
 
 app.listen(PORT, function () {
-    console.log("app now listening on PORT: " + PORT);
+    console.log("app now listening on localhost: " + PORT);
 });
