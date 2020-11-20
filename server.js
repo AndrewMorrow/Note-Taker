@@ -33,6 +33,9 @@ app.post("/api/notes", (req, res) => {
     // fs.writeFileSync("./db/db.json", db.toString());
 });
 
+app.post("/api/notes/:id", (req, res) => {
+req.params.id
+}
 //listener
 
 app.listen(PORT, function () {
