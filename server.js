@@ -9,14 +9,11 @@ var db = require("./db/db.json");
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 // routes
 
-// app.get("/", (req, res) => {
-//     // res.send();
-// });
-
+// read all notes here
 app.get("/notes", (req, res) => {
     res.sendFile(path.join(__dirname, "/public/notes.html"), function (err) {
         if (err) throw err;
@@ -25,17 +22,16 @@ app.get("/notes", (req, res) => {
 
 app.post("/api/notes", (req, res) => {
     var note = req.body;
-    // console.log(req.body);
-    // console.log(req.body.title);
     // console.log({ note });
     db.push(note);
     console.log({ db });
-    // fs.writeFileSync("./db/db.json", db.toString());
+    fs.writeFileSync("./db/db.json", JSON.stringify(db));
 });
 
-app.post("/api/notes/:id", (req, res) => {
-req.params.id
-}
+// app.delete("/api/notes/:id", (req, res) => {
+// req.params.id
+// }
+
 //listener
 
 app.listen(PORT, function () {
