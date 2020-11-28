@@ -29,9 +29,10 @@ app.get("/api/notes", (req, res) => {
 
 // this happens when the user saves a note
 app.post("/api/notes", (req, res) => {
+    var note = req.body;
+    console.log(req.params.id);
     // generates a unique id with the uuid package
     let id = uuidv4();
-    var note = req.body;
     // adds a unique id to the note
     note.id = id;
     // pushes the note to the db.json variable
