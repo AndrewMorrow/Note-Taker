@@ -3,7 +3,7 @@ var app = express();
 var path = require("path");
 var fs = require("fs");
 var { v4: uuidv4 } = require("uuid");
-var PORT = process.env.PORT || 8000;
+var PORT = process.env.PORT || 3010;
 var db = require("./db/db.json");
 
 // middleware
