@@ -9,10 +9,11 @@ var db = require("./db/db.json");
 // middleware
 
 app.use(express.json());
+// serves the public folder initially
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 
-// routes
+// Routes
 
 // returns notes.html
 app.get("/notes", (req, res) => {
@@ -28,11 +29,14 @@ app.get("/api/notes", (req, res) => {
 
 // this happens when the user saves a note
 app.post("/api/notes", (req, res) => {
+    // generates a unique id with the uuid package
     let id = uuidv4();
     var note = req.body;
+    // adds a unique id to the note
     note.id = id;
-    // console.log(note);
+    // pushes the note to the db.json variable
     db.push(note);
+    // writes the variable to the db.json file
     fs.writeFile(
         path.join(__dirname, "/db/db.json"),
         JSON.stringify(db),
@@ -40,13 +44,13 @@ app.post("/api/notes", (req, res) => {
             if (err) throw err;
         }
     );
-    // console.log(db);
+    // sends back the db.json file
     res.json(db);
 });
 
 app.delete("/api/notes/:id", (req, res) => {
-    // console.log(req.params.id);
     let delId = req.params.id;
+    // filters the array and returns all objects without a matching delId
     let filteredNotes = (array, value) => {
         return array.filter((ele) => {
             return ele.id != value;
@@ -54,8 +58,8 @@ app.delete("/api/notes/:id", (req, res) => {
     };
 
     let newNotes = filteredNotes(db, delId);
-    // console.log(newNotes);
 
+    // rewrites to the db.json after filtering
     fs.writeFile(
         path.join(__dirname, "/db/db.json"),
         JSON.stringify(newNotes),
@@ -63,8 +67,9 @@ app.delete("/api/notes/:id", (req, res) => {
             if (err) throw err;
         }
     );
+
     db = newNotes;
-    // console.log(db);
+    // sends back the db.json file
     res.json(db);
 });
 
@@ -76,7 +81,6 @@ app.get("*", (req, res) => {
 });
 
 //listener
-
 app.listen(PORT, function () {
     console.log("app now listening on http://localhost:" + PORT);
 });
