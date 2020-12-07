@@ -25,9 +25,11 @@ This application requires Node.js which can be downloaded <a href="https://nodej
 
 ## Usage Information
 
-<img src = "https://img.shields.io/badge/license-None-blue
+<img src = "https://img.shields.io/badge/license-None-blue">
 
 You will be presented with a page to take down a note and a title for that note. Once you have your not how you want it you cna hit the save icon and it will then save the note and add it to the list to the left of where the note was taken. You may then click on the note and it will display your saved note in the same field you originally created the notes in.
+
+<img src= "public/images/noteTaker.gif" >
 
 ---
 
