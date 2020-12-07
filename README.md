@@ -29,7 +29,8 @@ This application requires Node.js which can be downloaded <a href="https://nodej
 
 You will be presented with a page to take down a note and a title for that note. Once you have your not how you want it you cna hit the save icon and it will then save the note and add it to the list to the left of where the note was taken. You may then click on the note and it will display your saved note in the same field you originally created the notes in.
 
-<img src= "public/images/noteTaker.gif" >
+Click the image below to view the deployed application!
+[![Deployed Application](public/images/noteTaker.gif)](https://note-taker-163522.herokuapp.com/)
 
 ---
 
